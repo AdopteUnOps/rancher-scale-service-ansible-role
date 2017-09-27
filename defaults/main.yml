@@ -1,3 +1,2 @@
 ---
 rancher_master_url: "http://localhost:8080"
-rancher_project_name: "default"
