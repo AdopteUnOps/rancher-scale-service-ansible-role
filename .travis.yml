@@ -24,6 +24,7 @@ install:
   # Install Ansible.
   - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install ansible; else pip install ansible==$ANSIBLE_VERSION; fi
   - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
+  - ansible-galaxy install AdopteUnOps.rancher-install-cli
   - ansible-galaxy install AdopteUnOps.rancher-add-host
   - sudo docker run -d --restart=unless-stopped -p 8080:8080 rancher/server
   - "while ! curl --output /dev/null --silent --head --fail http://localhost:8080; do sleep 1 && echo -n .; done;"
