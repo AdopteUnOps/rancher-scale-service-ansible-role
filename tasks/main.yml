@@ -1,10 +1,13 @@
 ---
-- include_vars: "{{ inventory_dir }}/group_vars/{{ rancher_project_name }}/apikey.yml"
-
 - debug: msg="Scaling service {{ service_fqdn }}"
 
 - name: run rancher scale
-  shell: "RANCHER_URL={{rancher_master_url}} RANCHER_ACCESS_KEY={{rancher_api_key}} RANCHER_SECRET_KEY={{rancher_api_secret}} rancher scale {{ service_fqdn }}={{ service_scale }}"
+  environment:
+    RANCHER_URL: "{{rancher_master_url}}"
+    RANCHER_ACCESS_KEY: "{{ rancher_api_key }}"
+    RANCHER_SECRET_KEY: "{{ rancher_api_secret }}"
+    RANCHER_ENVIRONMENT: "{{ rancher_project_name }}"
+  shell: "rancher scale {{ service_fqdn }}={{ service_scale }}"
   register: scalelog
   become: yes
 
