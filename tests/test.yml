@@ -6,7 +6,7 @@
     rancher_api_secret: "mysecret"
     rancher_project_name: "default"
 
-    service_fqdn: mystack
+    service_fqdn: scheduler/scheduler
     service_scale: 1
   roles:
     - rancher-scale-service-ansible-role
