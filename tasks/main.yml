@@ -1,7 +1,5 @@
 ---
-- debug: msg="Scaling service {{ service_fqdn }}"
-
-- name: run rancher scale
+- name: Scaling service {{ service_fqdn }}
   environment:
     RANCHER_URL: "{{rancher_master_url}}"
     RANCHER_ACCESS_KEY: "{{ rancher_api_key }}"
